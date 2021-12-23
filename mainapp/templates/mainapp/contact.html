@@ -1,0 +1,58 @@
+{% extends 'mainapp/base.html' %}
+{% load static %}
+
+{% block title %}
+Team Members
+{% endblock %}
+
+{% block content %}
+<style>
+  .map-responsive{
+    overflow:hidden;
+    padding-bottom:50%;
+    position:relative;
+    height:0;
+}
+.map-responsive iframe{
+
+    height:100%;
+    width:100%;
+    margin-right: auto;
+    margin-left: auto;
+    position:absolute;
+}
+</style>
+<div class="container-fluid text-dark">
+  <div class="row border rounded-3 shadow-lg m-4 p-4 ">
+    <div class="col-6">
+      <div class="map-responsive">
+  <iframe src="https://www.google.com/maps/embed/v1/place?key=AIzaSyA0s1a7phLN0iaD6-UE7m4qP-z21pH0eSc&q=MIT+BOSTON"  frameborder="0" style="border:0" allowfullscreen></iframe>
+</div>
+      <div class="row m-3 p-3 text-center">
+             <div class="col-sm-4 text-center">
+               <h3>Number:</h3>
+               +1 415 555-5555
+             </div>
+             <div class="col-sm-4 text-center">
+               <h3>Email:</h3>
+               ITSE1910@gmail.com
+             </div>
+             <div class="col-sm-4 text-center">
+               <h3>Address:</h3>
+               Vassar St 35
+             </div>
+      </div>
+    </div>
+
+    
+    <div class="col-6">
+      <form method="post" class="rounded msg-form post-form">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <input type="submit" class="btn btn-primary text-white m-3" value="Send Message">
+      </form>
+
+    </div>
+  </div>
+</div>
+{% endblock %}
